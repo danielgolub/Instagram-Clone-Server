@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Instagram Clone Server for the Ionic Israel workshop",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "config": "^1.20.1",
     "express": "^4.13.4",
     "mongoose": "^4.4.12"

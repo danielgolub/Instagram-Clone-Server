@@ -1,5 +1,10 @@
 {
 	"Deployment": {
-		"port": 80
+		"port": "80",
+		"dbConfig": {
+      "host": "localhost",
+      "port": 27017,
+      "dbName": "instagramClone"
+    },
 	}
 }
