@@ -2,9 +2,11 @@
 	"Deployment": {
 		"port": "80",
 		"dbConfig": {
-      "host": "localhost",
+      "host": "128.199.33.147",
       "port": 27017,
-      "dbName": "instagramClone"
+      "dbName": "instagramClone",
+			"username": "admin",
+			"password": "ionicisrael"
     },
 	}
 }
