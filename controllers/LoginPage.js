@@ -5,11 +5,11 @@ var User = require("../models/User");
 
 function LoginPageController(req, res)
 {
-	const email = req.query.email;
+	const username = req.query.username;
 	const password = req.query.password;
 
 	User.findOne({
-		email: email,
+		username: username,
 		password: password,
 	}, {}, function(err, user) {
 		if(err) {

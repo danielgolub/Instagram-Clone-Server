@@ -5,11 +5,11 @@ var User = require("../models/User");
 
 function RegisterPageController(req, res)
 {
-	const email = req.body.email;
+	const username = req.body.username;
 	const password = req.body.password;
 
 	User.findOne({
-		email: email,
+		username: username,
 	}, {}, function(err, user) {
 		if(err) {
 			return res.sendStatus(500);
@@ -19,15 +19,16 @@ function RegisterPageController(req, res)
 		}
 
 		var user = new User({
-			email: email,
+			username: username,
 			password: password,
 		})
 		user.save(function(err) {
 			if(err) {
+				console.info(err)
 				return res.sendStatus(500);
 			}
 
-			res.sendStatus(201);
+			res.send(user, 201);
 		})
 	})
 }

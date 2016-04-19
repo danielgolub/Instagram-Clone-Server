@@ -9,6 +9,11 @@ var config = require("config");
 var HomePageController = require("./controllers/HomePage")
 var RegisterPageController = require("./controllers/RegisterPage")
 var LoginPageController = require("./controllers/LoginPage")
+var UpdateUserPageController = require("./controllers/UpdateUserPage")
+var ListPhotoPageController = require("./controllers/ListPhotoPage")
+var CreatePhotoPageController = require("./controllers/CreatePhotoPage")
+var ListCommentsPageController = require("./controllers/ListCommentsPage")
+var CreateCommentPageController = require("./controllers/CreateCommentPage")
 
 var LoginMiddleware = require("./middlewares/Login")
 var ValidateParamsMiddleware = require("./middlewares/ValidateParams")
@@ -41,8 +46,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', HomePageController);
-app.post('/user/create', ValidateParamsMiddleware, RegisterPageController);
+
+app.put('/user/create', ValidateParamsMiddleware, RegisterPageController);
 app.get('/user/login', ValidateParamsMiddleware, LoginPageController);
+app.post('/user/update', ValidateParamsMiddleware, LoginMiddleware, UpdateUserPageController);
+
+app.get('/photo/list', LoginMiddleware, ListPhotoPageController);
+app.put('/photo/create', ValidateParamsMiddleware, LoginMiddleware, CreatePhotoPageController);
+
+app.get('/photo/:id/comment/list', LoginMiddleware, ListCommentsPageController);
+app.put('/photo/:id/comment/create', ValidateParamsMiddleware, LoginMiddleware, CreateCommentPageController);
 
 /**
  * Bootstrap
